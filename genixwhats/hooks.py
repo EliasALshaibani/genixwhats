@@ -4,6 +4,24 @@ app_publisher = "genix"
 app_description = "genixwhats"
 app_email = "genix@frappe.com"
 app_license = "mit"
+fixtures = [{
+		"dt": "Property Setter", "filters": [
+		[
+			"name", "in", [
+				"Notification-channel-options",
+			]
+		]
+	]
+	}
+,]
+
+doctype_js = {
+	"Notification" : "public/js/notification.js"
+}
+
+override_doctype_class = {
+	"Notification": "genixwhats.overrides.notifications.GenixNotification"
+ }
 
 # Apps
 # ------------------
