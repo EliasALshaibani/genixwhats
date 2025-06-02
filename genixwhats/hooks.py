@@ -4,24 +4,36 @@ app_publisher = "genix"
 app_description = "genixwhats"
 app_email = "genix@frappe.com"
 app_license = "mit"
-fixtures = [{
-		"dt": "Property Setter", "filters": [
-		[
-			"name", "in", [
-				"Notification-channel-options",
-			]
-		]
-	]
-	}
-,]
+fixtures = [
+    {
+        "dt": "Property Setter",
+        "filters": [
+            [
+                "doc_type", "=", "Notification Recipient"
+            ],
+            [
+                "field_name", "=", "receiver_by_document_field"
+            ],
+            [
+                "property", "=", "fieldtype"
+            ]
+        ]
+    },
+    {
+        "dt": "Property Setter",
+        "filters": [
+            [
+                "name", "in", [
+                    "Notification-channel-options",
+                ]
+            ]
+        ]
+    }
+]
 
-doctype_js = {
-	"Notification" : "public/js/notification.js"
-}
 
-override_doctype_class = {
-	"Notification": "genixwhats.overrides.notifications.GenixNotification"
- }
+app_include_css = "/assets/genixwhats/css/whatsapp_loader.css"
+app_include_js = "/assets/genixwhats/js/button_send_whatsapp.js"
 
 # Apps
 # ------------------
