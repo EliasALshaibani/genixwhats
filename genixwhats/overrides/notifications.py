@@ -69,7 +69,7 @@ class GenixNotification(Notification):
                     frappe.msgprint(_(f"Failed to send text message to {phone_number}"), alert=True)
 
 
-            time.sleep(5)
+            time.sleep(2)
 
         if sent_numbers:
             frappe.msgprint(_(f"WhatsApp message sent to: {', '.join(sent_numbers)}"))
@@ -231,14 +231,15 @@ def get_whatsapp_notifications(doctype):
 
 @frappe.whitelist()
 def send_whatsapp_file(docname, doctype, notification_name):
-    
     try:
         if not frappe.has_permission(doctype, "read", doc=docname):
             frappe.throw(_("You do not have permission."))
 
         doc = frappe.get_doc(doctype, docname)
-        notification = frappe.get_doc("Notification", notification_name)
-
+        
+        notification_doc = frappe.get_doc("Notification", notification_name)
+        notification = GenixNotification(notification_doc.as_dict())
+        
         if notification.channel != "genixwhats":
             frappe.throw(_("Invalid notification channel."))
 
@@ -247,4 +248,5 @@ def send_whatsapp_file(docname, doctype, notification_name):
     except Exception as e:
         frappe.log_error(frappe.get_traceback(), "WhatsApp Notification Error")
         frappe.throw(_("An error occurred. Contact admin."))
+
 
