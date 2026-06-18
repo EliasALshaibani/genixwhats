@@ -6,8 +6,7 @@ CONFIG_DOCTYPE = "For Whats Net Configuration"
 
 
 def get_ultramsg_settings():
-    """يقرأ إعدادات الاتصال من دوكتايب الإعدادات (نفس الدوكتايب الذي
-    يستخدمه notifications.py للإرسال)."""
+   
     conf = frappe.get_doc(CONFIG_DOCTYPE)
     api_url = (conf.api_url or "").strip().rstrip("/")
     token = (conf.token or "").strip()
