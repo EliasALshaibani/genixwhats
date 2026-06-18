@@ -34,7 +34,9 @@ fixtures = [
 
 app_include_css = "/assets/genixwhats/css/whatsapp_loader.css"
 app_include_js = "/assets/genixwhats/js/button_send_whatsapp.js"
-
+override_doctype_class = {
+    "Notification": "genixwhats.overrides.notifications.GenixNotification"
+}
 # Apps
 # ------------------
 
@@ -272,3 +274,14 @@ app_include_js = "/assets/genixwhats/js/button_send_whatsapp.js"
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
 
+
+
+# [genixwhats] Reconciliation sync — safety net for anything the webhook missed.
+scheduler_events = {
+    "cron": {
+        # Every 4 hours
+        "0 */4 * * *": [
+            "genixwhats.overrides.ultramsg_sync.scheduled_sync"
+        ]
+    }
+}

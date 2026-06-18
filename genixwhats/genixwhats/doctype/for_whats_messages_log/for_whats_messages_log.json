@@ -5,50 +5,29 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "message_id",
-  "sender",
-  "recipient",
-  "body",
-  "status",
-  "sent_at",
-  "priority",
-  "ack",
+  "ultramsg_id",
+  "to_number",
+  "from_number",
+  "message_body",
   "message_type",
-  "caption",
-  "file_name"
+  "status",
+  "ack",
+  "priority",
+  "created_on",
+  "sent_on",
+  "raw_response",
+  "reference_doctype",
+  "reference_name"
  ],
  "fields": [
   {
-   "fieldname": "message_id",
-   "fieldtype": "Data",
-   "label": "Message ID",
-   "unique": 1
-  },
-  {
-   "fieldname": "sender",
-   "fieldtype": "Data",
-   "label": "Sender"
-  },
-  {
-   "fieldname": "recipient",
-   "fieldtype": "Data",
-   "label": "Recipient"
-  },
-  {
-   "fieldname": "body",
-   "fieldtype": "Text",
-   "label": "Body"
-  },
-  {
    "fieldname": "status",
    "fieldtype": "Select",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Status",
-   "options": "all\nsent\nqueue\nunsent"
-  },
-  {
-   "fieldname": "sent_at",
-   "fieldtype": "Datetime",
-   "label": "Sent At"
+   "options": "sent\nqueue\nunsent"
   },
   {
    "fieldname": "priority",
@@ -62,25 +41,68 @@
   },
   {
    "fieldname": "message_type",
-   "fieldtype": "Select",
-   "label": "Message Type",
-   "options": "chat\ndocument"
-  },
-  {
-   "fieldname": "caption",
-   "fieldtype": "Text",
-   "label": "Caption"
-  },
-  {
-   "fieldname": "file_name",
    "fieldtype": "Data",
-   "label": "File Name"
+   "label": "Message Type"
+  },
+  {
+   "fieldname": "ultramsg_id",
+   "fieldtype": "Data",
+   "label": "Ultramsg ID",
+   "unique": 1
+  },
+  {
+   "fieldname": "to_number",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "To Number"
+  },
+  {
+   "fieldname": "from_number",
+   "fieldtype": "Data",
+   "label": "From Number"
+  },
+  {
+   "fieldname": "message_body",
+   "fieldtype": "Small Text",
+   "label": "Message Body"
+  },
+  {
+   "fieldname": "created_on",
+   "fieldtype": "Datetime",
+   "label": "Created On"
+  },
+  {
+   "fieldname": "sent_on",
+   "fieldtype": "Datetime",
+   "label": "Sent On"
+  },
+  {
+   "fieldname": "raw_response",
+   "fieldtype": "Small Text",
+   "label": "raw_response"
+  },
+  {
+   "fieldname": "reference_doctype",
+   "fieldtype": "Link",
+   "label": "Reference Document Type",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "reference_name",
+   "fieldtype": "Dynamic Link",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Reference Name",
+   "options": "reference_doctype"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-05-02 23:17:17.248632",
+ "modified": "2026-06-18 15:02:28.146066",
  "modified_by": "Administrator",
  "module": "genixwhats",
  "name": "For Whats Messages Log",

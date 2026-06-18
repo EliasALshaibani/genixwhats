@@ -9,7 +9,10 @@
  "field_order": [
   "api_url",
   "instance_id",
-  "token"
+  "token",
+  "column_break_hwxc",
+  "webhook_secret",
+  "webhook_url"
  ],
  "fields": [
   {
@@ -32,13 +35,28 @@
    "in_list_view": 1,
    "label": "Token",
    "reqd": 1
+  },
+  {
+   "fieldname": "column_break_hwxc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "webhook_secret",
+   "fieldtype": "Password",
+   "label": "Webhook Secret"
+  },
+  {
+   "fieldname": "webhook_url",
+   "fieldtype": "Small Text",
+   "label": "Webhook URL",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2025-04-29 03:25:09.371743",
- "modified_by": "eliasalshaibani@gmail.com",
+ "modified": "2026-06-17 18:34:00.780494",
+ "modified_by": "Administrator",
  "module": "genixwhats",
  "name": "For Whats Net Configuration",
  "owner": "eliasalshaibani@gmail.com",
