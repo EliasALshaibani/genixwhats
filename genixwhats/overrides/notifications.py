@@ -21,8 +21,8 @@ GW_HTTP_TIMEOUT = 30          # HTTP request timeout for UltraMsg.
 # Note: In synchronous mode, this delay blocks execution for its duration.
 # Keep it short for testing. In production (with enqueue), increase it
 # to 3–8 seconds or more for stronger account protection.
-GW_DELAY_MIN = 1.0            # Minimum delay between messages (in seconds).
-GW_DELAY_MAX = 3.0            # Maximum delay between messages (in seconds).
+GW_DELAY_MIN = 3.0            # Minimum delay between messages (in seconds).
+GW_DELAY_MAX = 8.0            # Maximum delay between messages (in seconds).
 
 # Daily limit per number (additional anti-ban protection).
 # Prevents exceeding a set number of messages per instance per day.
