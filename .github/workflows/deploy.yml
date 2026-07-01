@@ -1,0 +1,36 @@
+name: CI/CD - Deploy genixwhats
+
+on:
+  push:
+    branches: [ develop ]
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout latest code
+        run: |
+          cd /home/erp/frappe-bench/apps/genixwhats
+          git fetch upstream
+          git reset --hard upstream/develop
+
+      - name: Install Python dependencies
+        run: |
+          cd /home/erp/frappe-bench
+          ./env/bin/pip install -e apps/genixwhats
+
+      - name: Run database migrations
+        run: |
+          cd /home/erp/frappe-bench
+          bench --site support.local migrate
+
+      - name: Build assets
+        run: |
+          cd /home/erp/frappe-bench
+          bench build --app genixwhats
+
+      - name: Restart bench
+        run: |
+          cd /home/erp/frappe-bench
+          bench restart
