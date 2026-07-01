@@ -12,8 +12,8 @@ jobs:
       - name: Checkout latest code
         run: |
           cd /home/erp/frappe-bench/apps/genixwhats
-          git fetch upstream
-          git reset --hard upstream/develop
+          git fetch upstream develop
+          git reset --hard FETCH_HEAD
 
       - name: Install Python dependencies
         run: |
